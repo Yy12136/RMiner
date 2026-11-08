@@ -140,7 +140,7 @@ cd assemble/task/g1_valve_handwheel_task
 | `g1_wall_hole_detonator_task` | Task06 炮孔装药 | `./run_task.sh` | `./run_quest3s.sh` | `./benchmark.sh eval` |
 | `w1_mobile_drilling_task` | W1 履带底盘 + G1 打钻（主线） | `./run_task.sh` | `./run_quest3s.sh` | — |
 | `g1_tabletop_grasp_inspire_task` | Inspire 手版桌面抓取 | `./run_task.sh` | `./run_quest3s.sh` | — |
-| `g1_hand_cart_rolling_demo_task` | 手推车滚动 demo | `./run_rolling_demo.sh` | `./run_quest3s_rolling_demo.sh` | — |
+| `g1_hand_cart_rolling_demo_task` | 手推车滚动 demo（数据集仅有 staging 原始视频） | `./run_rolling_demo.sh` | `./run_quest3s_rolling_demo.sh` | — |
 | `quest_dex3_hand_test` | G1 + Dex3 手套测试 | `./run_sim_hand_test.sh` | — | — |
 
 其它目录（`galbot_tracked_teleop`、`astribot_tracked_teleop`、
