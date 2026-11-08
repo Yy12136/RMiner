@@ -1,0 +1,1193 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (-2.785015304035854, 2.975896537075529, 2.8707220901798722)
+                double3 target = (-2.6068393539272003, -0.9714250962182778, 0.3920199814425196)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        string mountBody = "/Assembly/LiftCarriage"
+        dictionary omni_layer = {
+            string authoring_layer = "./Tracked_Galbot_UpperBody_SolidBoom.usda"
+        }
+        dictionary renderSettings = {
+        }
+        string sourceTrackedBase = "../../assets-new/robot/Tracked_G1_UpperBody_SolidBoom/Tracked_G1_UpperBody_SolidBoom.usd"
+        string sourceUpperBody = "../../assets-new/robot/galbot_one_golf/usd/galbot_one_golf.usda"
+        string upperBodyRoot = "/Assembly/GalbotUpperBody/leg_link5"
+    }
+    defaultPrim = "Assembly"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Assembly" (
+    "Tracked base and solid boom from the G1 assembly; upper body from Galbot One Golf."
+    prepend references = @../../assets-new/robot/Tracked_G1_UpperBody_SolidBoom/Tracked_G1_UpperBody_SolidBoom.usd@
+)
+{
+    over "G1UpperBody" (
+        active = false
+    )
+    {
+    }
+
+    def Xform "GalbotUpperBody" (
+        prepend references = @../../assets-new/robot/galbot_one_golf/usd/galbot_one_golf.usda@
+    )
+    {
+        quatd xformOp:orient = (6.123233995736766e-17, 0, 0, 1)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1.24847975883104, 0, 0.4532363792981387)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "base_link" (
+            active = false
+        )
+        {
+        }
+
+        over "leg_link1" (
+            active = false
+        )
+        {
+        }
+
+        over "leg_link2" (
+            active = false
+        )
+        {
+        }
+
+        over "leg_link3" (
+            active = false
+        )
+        {
+        }
+
+        over "leg_link4" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_1" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_1_passive_0" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_1_passive_1" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_1_passive_2" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_1_passive_3" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_1_passive_4" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_1_passive_5" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_1_passive_6" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_1_passive_7" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_1_passive_8" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_1_passive_9" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_2" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_2_passive_0" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_2_passive_1" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_2_passive_2" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_2_passive_3" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_2_passive_4" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_2_passive_5" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_2_passive_6" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_2_passive_7" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_2_passive_8" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_2_passive_9" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_3" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_3_passive_0" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_3_passive_1" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_3_passive_2" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_3_passive_3" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_3_passive_4" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_3_passive_5" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_3_passive_6" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_3_passive_7" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_3_passive_8" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_3_passive_9" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_4" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_4_passive_0" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_4_passive_1" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_4_passive_2" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_4_passive_3" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_4_passive_4" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_4_passive_5" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_4_passive_6" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_4_passive_7" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_4_passive_8" (
+            active = false
+        )
+        {
+        }
+
+        over "wheel_4_passive_9" (
+            active = false
+        )
+        {
+        }
+
+        over "joints"
+        {
+            over "leg_joint1" (
+                active = false
+            )
+            {
+            }
+
+            over "leg_joint2" (
+                active = false
+            )
+            {
+            }
+
+            over "leg_joint3" (
+                active = false
+            )
+            {
+            }
+
+            over "leg_joint4" (
+                active = false
+            )
+            {
+            }
+
+            over "leg_joint5" (
+                active = false
+            )
+            {
+            }
+
+            over "left_arm_joint1"
+            {
+                float drive:angular:physics:targetPosition = 60
+                float state:angular:physics:position = 60
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_arm_joint2"
+            {
+                float drive:angular:physics:targetPosition = -90
+                float state:angular:physics:position = -90
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_arm_joint4"
+            {
+                float drive:angular:physics:targetPosition = 0
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_arm_joint1"
+            {
+                float drive:angular:physics:targetPosition = -60
+                float state:angular:physics:position = -60
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_arm_joint2"
+            {
+                float drive:angular:physics:targetPosition = 90
+                float state:angular:physics:position = 90
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_arm_joint4"
+            {
+                float drive:angular:physics:targetPosition = 0
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_gripper_joint"
+            {
+                float drive:angular:physics:targetPosition = 92
+                float state:angular:physics:position = 92
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_gripper_joint"
+            {
+                float drive:angular:physics:targetPosition = 92
+                float state:angular:physics:position = 92
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_gripper_l_inner_knuckle_joint" (
+                delete apiSchemas = ["PhysxMimicJointAPI:rotZ"]
+            )
+            {
+                float state:angular:physics:position = 92
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_gripper_l_finger_joint" (
+                delete apiSchemas = ["PhysxMimicJointAPI:rotZ"]
+            )
+            {
+                float state:angular:physics:position = -92
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_gripper_l_knuckle_joint" (
+                delete apiSchemas = ["PhysxMimicJointAPI:rotZ"]
+            )
+            {
+                float state:angular:physics:position = 92
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_gripper_r_inner_knuckle_joint" (
+                delete apiSchemas = ["PhysxMimicJointAPI:rotZ"]
+            )
+            {
+                float state:angular:physics:position = -92
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_gripper_r_finger_joint" (
+                delete apiSchemas = ["PhysxMimicJointAPI:rotZ"]
+            )
+            {
+                float state:angular:physics:position = 92
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_gripper_l_inner_knuckle_joint" (
+                delete apiSchemas = ["PhysxMimicJointAPI:rotZ"]
+            )
+            {
+                float state:angular:physics:position = 92
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_gripper_l_finger_joint" (
+                delete apiSchemas = ["PhysxMimicJointAPI:rotZ"]
+            )
+            {
+                float state:angular:physics:position = -92
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_gripper_l_knuckle_joint" (
+                delete apiSchemas = ["PhysxMimicJointAPI:rotZ"]
+            )
+            {
+                float state:angular:physics:position = 92
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_gripper_r_inner_knuckle_joint" (
+                delete apiSchemas = ["PhysxMimicJointAPI:rotZ"]
+            )
+            {
+                float state:angular:physics:position = -92
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_gripper_r_finger_joint" (
+                delete apiSchemas = ["PhysxMimicJointAPI:rotZ"]
+            )
+            {
+                float state:angular:physics:position = 92
+                float state:angular:physics:velocity = 0
+            }
+
+            over "wheel1_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_1_passive_0_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_1_passive_1_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_1_passive_2_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_1_passive_3_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_1_passive_4_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_1_passive_5_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_1_passive_6_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_1_passive_7_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_1_passive_8_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_1_passive_9_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel2_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_2_passive_0_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_2_passive_1_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_2_passive_2_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_2_passive_3_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_2_passive_4_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_2_passive_5_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_2_passive_6_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_2_passive_7_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_2_passive_8_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_2_passive_9_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel3_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_3_passive_0_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_3_passive_1_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_3_passive_2_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_3_passive_3_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_3_passive_4_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_3_passive_5_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_3_passive_6_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_3_passive_7_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_3_passive_8_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_3_passive_9_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel4_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_4_passive_0_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_4_passive_1_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_4_passive_2_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_4_passive_3_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_4_passive_4_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_4_passive_5_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_4_passive_6_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_4_passive_7_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_4_passive_8_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_4_passive_9_joint" (
+                active = false
+            )
+            {
+            }
+
+            over "head_joint1"
+            {
+                float state:angular:physics:position = 3.7915167e-22
+            }
+
+            over "head_joint2"
+            {
+                float state:angular:physics:position = 0
+            }
+
+            over "left_arm_joint3"
+            {
+                float state:angular:physics:position = 0
+            }
+
+            over "right_arm_joint3"
+            {
+                float state:angular:physics:position = 0
+            }
+
+            over "left_arm_joint5"
+            {
+                float state:angular:physics:position = -4.6283163e-26
+            }
+
+            over "right_arm_joint5"
+            {
+                float state:angular:physics:position = 0
+            }
+
+            over "left_arm_joint6"
+            {
+                float state:angular:physics:position = 0
+            }
+
+            over "right_arm_joint6"
+            {
+                float state:angular:physics:position = 0
+            }
+
+            over "left_arm_joint7"
+            {
+                float state:angular:physics:position = 0
+            }
+
+            over "right_arm_joint7"
+            {
+                float state:angular:physics:position = 0
+            }
+        }
+
+        over "head_link1"
+        {
+            quatd xformOp:orient = (-0.9999999999936572, 4.470349093677052e-8, -0.0000035613781090571015, -1.4901163608582738e-8)
+            double3 xformOp:translate = (0.10694492248612084, 3.3587500197773685e-8, 0.9307746887111356)
+        }
+
+        over "head_link2"
+        {
+            quatd xformOp:orient = (-0.7071067495719209, 0.7071068127922042, -0.0000025077378974484017, -0.0000025288113251187995)
+            double3 xformOp:translate = (0.10694492248612084, 3.3587500197773685e-8, 0.9307746887111356)
+        }
+
+        over "left_arm_link1"
+        {
+            quatd xformOp:orient = (0.5000017673530113, -0.5000017971553388, -0.4999982475417983, -0.4999981879371439)
+            double3 xformOp:translate = (0.10694345532583766, 0.20843002234931685, 0.7256646714974699)
+        }
+
+        over "left_arm_link2"
+        {
+            quatd xformOp:orient = (0.49999818098253285, -0.500001833912118, 0.500001774307465, -0.4999982107848628)
+            double3 xformOp:translate = (0.10694345532583766, 0.20843002234931685, 0.7256646714974699)
+        }
+
+        over "left_arm_link3"
+        {
+            quatd xformOp:orient = (0.0000034439063502089695, -0.25881901237591587, -0.9659258350514709, 0.0000010068601465629268)
+            double3 xformOp:translate = (0.10694092956761558, 0.2084299910568357, 0.3756646774670493)
+        }
+
+        over "left_arm_link4"
+        {
+            quatd xformOp:orient = (0.6830119881306906, -0.6830134120461782, 0.18301514381595257, -0.18301027339694678)
+            double3 xformOp:translate = (0.10694092956761558, 0.2084299910568357, 0.3756646774670493)
+        }
+
+        over "left_arm_link5"
+        {
+            quatd xformOp:orient = (-0.0000010068602971369245, -0.9659258237381312, 0.2588190545978764, 0.0000034439063062441377)
+            double3 xformOp:translate = (0.1069383468175935, 0.20842993259010636, 0.01566466317120402)
+        }
+
+        over "left_arm_link6"
+        {
+            quatd xformOp:orient = (0.35355460309313197, -0.6123746645513055, -0.3535521660471228, -0.612370213784702)
+            double3 xformOp:translate = (0.1069383468175935, 0.20842993259010636, 0.01566466317120402)
+        }
+
+        over "left_arm_link7"
+        {
+            quatd xformOp:orient = (0.6830151352979374, -0.18301342056419348, -0.6830102648789315, -0.18301199664870582)
+            double3 xformOp:translate = (0.1069383468175935, 0.20842993259010636, 0.01566466317120402)
+        }
+
+        over "left_gripper_r_knuckle_link"
+        {
+            quatd xformOp:orient = (-0.30208030978041384, 0.7047170662810393, -0.05805850953139312, -0.6393360246429164)
+            double3 xformOp:translate = (0.08768697265601899, 0.17508792058183942, -0.1745951863797878)
+        }
+
+        over "left_gripper_l_inner_knuckle_link"
+        {
+            quatd xformOp:orient = (-0.05805617026609837, 0.639330948959896, -0.30208090263834847, -0.7047216096142316)
+            double3 xformOp:translate = (0.11993694984584369, 0.2309465533031859, -0.1790954284918821)
+        }
+
+        over "left_gripper_l_finger_link"
+        {
+            quatd xformOp:orient = (-0.18301201720938903, 0.6830102543887301, -0.18301345971431343, -0.683015129788638)
+            double3 xformOp:translate = (0.11202726183989438, 0.21724709184385552, -0.22122334978293806)
+        }
+
+        over "left_gripper_l_knuckle_link"
+        {
+            quatd xformOp:orient = (-0.05805617026609837, 0.639330948959896, -0.30208090263834847, -0.7047216096142316)
+            double3 xformOp:translate = (0.12618698356202152, 0.24177186989426105, -0.17459547342059983)
+        }
+
+        over "left_gripper_r_inner_knuckle_link"
+        {
+            quatd xformOp:orient = (-0.3020803097804139, 0.7047170662810391, -0.05805850953139302, -0.6393360246429165)
+            double3 xformOp:translate = (0.09393694180342525, 0.18591323571124563, -0.17909523464613383)
+        }
+
+        over "left_gripper_r_finger_link"
+        {
+            quatd xformOp:orient = (-0.1830119696853674, 0.6830102416547005, -0.18301350723798795, -0.6830151425225658)
+            double3 xformOp:translate = (0.1018460212535345, 0.19961267642375924, -0.2212232769380411)
+        }
+
+        over "right_arm_link1"
+        {
+            quatd xformOp:orient = (0.5000018120564074, 0.5000017524519398, -0.49999816212751974, 0.49999827335141966)
+            double3 xformOp:translate = (0.10694346774936896, -0.2084299918508919, 0.7256647087676215)
+        }
+
+        over "right_arm_link2"
+        {
+            quatd xformOp:orient = (-0.4999982693974734, -0.5000017047866048, -0.5000018160105073, -0.49999820979301063)
+            double3 xformOp:translate = (0.10694346774936896, -0.2084299918508919, 0.7256647087676215)
+        }
+
+        over "right_arm_link3"
+        {
+            quatd xformOp:orient = (0.000003452744006371411, 0.2588190516998991, -0.9659258245148047, -7.989447971812336e-7)
+            double3 xformOp:translate = (0.10694100318709267, -0.20843005164088235, 0.37566471473676827)
+        }
+
+        over "right_arm_link4"
+        {
+            quatd xformOp:orient = (-0.6830121436981874, -0.6830132735765418, -0.18301511816056099, -0.18301023524311036)
+            double3 xformOp:translate = (0.10694100318709267, -0.20843005164088235, 0.37566471473676827)
+        }
+
+        over "right_arm_link5"
+        {
+            quatd xformOp:orient = (-0.00000341052208051262, -0.25881900947790343, 0.9659258358282943, 8.102579849844638e-7)
+            double3 xformOp:translate = (0.10693845303574141, -0.20843013941933847, 0.01566470044069651)
+        }
+
+        over "right_arm_link6"
+        {
+            quatd xformOp:orient = (-0.3535547133072432, -0.6123745330431316, 0.35355211304314765, -0.6123703122630662)
+            double3 xformOp:translate = (0.10693845303574141, -0.20843013941933847, 0.01566470044069651)
+        }
+
+        over "right_arm_link7"
+        {
+            quatd xformOp:orient = (-0.6830151202407613, -0.18301324964072646, 0.6830102970341803, -0.1830121037628951)
+            double3 xformOp:translate = (0.10693845303574141, -0.20843013941933847, 0.01566470044069651)
+        }
+
+        over "right_gripper_r_knuckle_link"
+        {
+            quatd xformOp:orient = (-0.05805628495321784, -0.6393310667802469, -0.3020806224309462, 0.704721613389851)
+            double3 xformOp:translate = (0.1261871159445706, -0.24177216606130505, -0.17459542086343552)
+        }
+
+        over "right_gripper_l_inner_knuckle_link"
+        {
+            quatd xformOp:orient = (-0.3020804184751326, -0.7047170780810081, -0.05805820579041103, 0.6393359878618233)
+            double3 xformOp:translate = (0.0939370965780535, -0.18591352101343928, -0.1790952077012506)
+        }
+
+        over "right_gripper_l_finger_link"
+        {
+            quatd xformOp:orient = (-0.1830120832022089, -0.6830103075243859, -0.1830132104906072, 0.683015125750047)
+            double3 xformOp:translate = (0.10184618343519541, -0.19961298618327117, -0.2212232406493873)
+        }
+
+        over "right_gripper_l_knuckle_link"
+        {
+            quatd xformOp:orient = (-0.3020804184751326, -0.7047170780810081, -0.05805820579041103, 0.6393359878618233)
+            double3 xformOp:translate = (0.08768713087702064, -0.17508820183092222, -0.17459516439851827)
+        }
+
+        over "right_gripper_r_inner_knuckle_link"
+        {
+            quatd xformOp:orient = (-0.05805628495321778, -0.6393310667802469, -0.3020806224309462, 0.704721613389851)
+            double3 xformOp:translate = (0.11993708717112664, -0.23094684867984727, -0.17909538089834204)
+        }
+
+        over "right_gripper_r_finger_link"
+        {
+            quatd xformOp:orient = (-0.18301213072622896, -0.6830103202583961, -0.18301316296692843, 0.68301511301611)
+            double3 xformOp:translate = (0.11202741392238887, -0.21724740743413154, -0.22122331153332492)
+        }
+    }
+
+    def PhysicsFixedJoint "GalbotMountJoint" (
+        prepend apiSchemas = ["PhysicsArticulationRootAPI"]
+    )
+    {
+        rel physics:body0 = </Assembly/LiftCarriage>
+        rel physics:body1 = </Assembly/GalbotUpperBody/leg_link5>
+        bool physics:collisionEnabled = 0
+        point3f physics:localPos0 = (-1.355422, 0, 1.006901)
+        point3f physics:localPos1 = (0, 0, 0)
+        quatf physics:localRot0 = (0.49999815, 0.50000167, -0.5000017, -0.49999812)
+        quatf physics:localRot1 = (1, 0, 0, 0)
+    }
+}
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </OmniverseKit_Persp>
+                token omni:rtx:ambientOcclusion:denoiserMode = "none"
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:debug:view:pixelDebug:enableFixedTextPos = 1
+                token omni:rtx:directLighting:sampledLighting:denoisingTechnique = "None"
+                bool omni:rtx:dlss:frameGeneration = 0
+                float3 omni:rtx:domeLight:rotationAxis = (0, 0, 1)
+                bool omni:rtx:indirectDiffuse:denoiser:enabled = 0
+                bool omni:rtx:material:db:syncLoads = 1
+                token omni:rtx:post:dlss:execMode = "performance"
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:adaptiveSampling:filterError = 0
+                uint omni:rtx:pt:adaptiveSampling:fixedSppIterations = 2
+                uint omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                uint omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                bool omni:rtx:reflections:denoiser:enabled = 0
+                token omni:rtx:rendermode = "RealTimePathTracing"
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                int omni:rtx:rt:sss:samples = 1
+                uint omni:rtx:rtpt:maxVolumeBounces = 15
+                float omni:rtx:rtpt:modulatingRoughnessThreshold = 0.08
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (2048, 1080)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+            uniform token sourceType = "raw"
+        }
+    }
+}
+
+over "OmniverseKit_Persp" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (0.01, 10000000)
+    float exposure:fStop = 5
+    float exposure:responsivity = 1.1026709
+    float exposure:time = 0.02
+    float focalLength = 18.147562
+    float focusDistance = 400
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -4.6644462575664205)
+    float3 xformOp:rotateXYZ = (57.89968, -2.0276036e-14, -177.41551)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (-2.785015304035854, 2.975896537075529, 2.8707220901798722)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Front" (
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    float3 xformOp:rotateXYZ = (90, -1.2722219e-14, 90)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (5, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Right" (
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    float3 xformOp:rotateXYZ = (90, -1.41245e-30, 1.2722219e-14)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, -5, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Top" (
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    float3 xformOp:rotateXYZ = (-1.2722219e-14, -7.016709e-15, -90)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 5)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+

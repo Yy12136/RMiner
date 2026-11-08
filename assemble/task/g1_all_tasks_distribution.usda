@@ -1,0 +1,1569 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary MovieCaptureSettings = {
+            double animation_fps = 24
+            int bad_frame_size_threshold = 0
+            int batch_count = 1
+            string camera_name = "/OmniverseKit_Persp"
+            bool capture_application = 0
+            int capture_every_nth_frames = 20
+            bool capture_every_nth_frames_checked = 0
+            int capture_frame_end = 140
+            int capture_frame_start = 0
+            string capture_name = "Capture005"
+            string capture_range = "Custom Range - Frames"
+            double capture_time_end = 10
+            double capture_time_start = 0
+            int early_quit_time_limit = 0
+            string exr_compression_method = "zips"
+            double fps = 24
+            bool generate_shader_cache = 0
+            bool hdr_for_exr_checked = 1
+            bool hdr_for_exr_visible = 0
+            int iray_pathtrace_spp = 1
+            int iray_subframes_per_frame = 32
+            int max_bad_frame_threshold = 3
+            string movie_type = "Sequence"
+            int mp4_encoding_bitrate = 16777216
+            int mp4_encoding_iframe_interval = 60
+            string mp4_encoding_preset = "PRESET_P3"
+            string mp4_encoding_profile = "H264_PROFILE_HIGH"
+            string mp4_encoding_rc_mode = "RC_VBR"
+            int mp4_encoding_rc_target_quality = 0
+            string mp4_encoding_tuning_info = "TUNING_HIGH_QUALITY"
+            bool mp4_encoding_video_full_range_flag = 0
+            string output_format = ".png"
+            string output_path = "./_captures"
+            bool overwrite_existing_frame_checked = 0
+            bool pathtrace_mb_checked = 1
+            double pathtrace_mb_frame_shutter_close = 0.5
+            double pathtrace_mb_frame_shutter_open = 0
+            int pathtrace_mb_subframes = 64
+            int pathtrace_spp_per_iteration_mgpu = 1
+            int pathtrace_spp_per_subframe = 1
+            string queue_instance = "localhost Queue"
+            int realtime_settle_latency = 0
+            int realtime_wait_for_render_resolve = 0
+            string render_preset = "RealTimePathTracing"
+            bool render_style = 1
+            bool renumber_negtive_frames_checked = 0
+            int resolution_aspect_ratio_selected = 0
+            string resolution_aspect_ratios = '["16:9", "4:3"]'
+            int resolution_height = 1080
+            string resolution_type = "Custom"
+            bool resolution_w_h_linked = 1
+            int resolution_width = 1920
+            int run_n_frames_before_start = 20
+            bool run_n_frames_before_start_checked = 0
+            bool save_alpha_checked = 0
+            bool skip_upload_to_s3 = 0
+            int start_delay_seconds = 10
+            double sunstudy_end = 18
+            int sunstudy_movie_minutes = 1
+            int sunstudy_movie_seconds = 1
+            double sunstudy_start = 6
+            string task_comment = ""
+            int task_priority = 65535
+            string task_type = "create-render"
+            double texture_streaming_memory_budget = 0.6000000238418579
+            bool upload_to_s3 = 0
+        }
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (-4.291301173234416, -3.9983488432102847, 1.4984578464023879)
+                double3 target = (1.1711772111341459, 1.2755351050479122, 1.197670281754387)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/AllTasksDistribution/Camera"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./g1_all_tasks_distribution.usda"
+        }
+        dictionary renderSettings = {
+            int "rtx:externalFrameCounter" = 100
+        }
+    }
+    defaultPrim = "AllTasksDistribution"
+    endTimeCode = 140
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "AllTasksDistribution"
+{
+    def DomeLight "OverviewDome"
+    {
+        color3f color = (1, 1, 1)
+        float intensity = 900
+    }
+
+    def DistantLight "OverviewSun"
+    {
+        color3f color = (1, 0.96, 0.9)
+        float intensity = 1800
+        float3 xformOp:rotateXYZ = (-45, 25, -25)
+        uniform token[] xformOpOrder = ["xformOp:rotateXYZ"]
+    }
+
+    def Camera "OverviewCamera" (
+        prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    )
+    {
+        float exposure:fStop = 5
+        float exposure:responsivity = 1.1026709
+        float exposure:time = 0.02
+        float focalLength = 24
+        double3 xformOp:rotateXYZ = (62, 0, 0)
+        double3 xformOp:translate = (0, -5.5, 4.2)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+    }
+
+    def Xform "Environment" (
+        references = @../assets-new/scene/RealScene04/real2sim_intermediate/realscene04_hole.usd@
+    )
+    {
+        uniform quatf xformOp:orient = (0, 1, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:orient"]
+
+        over "leiguan" (
+            active = false
+        )
+        {
+        }
+
+        over "Xform"
+        {
+            bool physics:kinematicEnabled = 1
+        }
+    }
+
+    def Xform "Robot_Task01_Pose" (
+        references = @../assets-new/robot/Tracked_G1_UpperBody_SolidBoom/Tracked_G1_UpperBody_SolidBoom.usd@
+    )
+    {
+        uniform quatf xformOp:orient = (0.9659258, 0, 0, -0.258819)
+        double3 xformOp:translate = (-1.76234598, 2.19220983, 0.2)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+        over "G1UpperBody"
+        {
+            over "d435_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "head_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "imu_in_pelvis"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "imu_in_torso"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_ankle_pitch_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_ankle_roll_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_elbow_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_hand_Link1_1"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_hand_Link1_2"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_hand_Link1_3"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_hand_Link2_1"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_hand_Link2_2"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_hand_Link2_3"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_hand_base_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_hip_pitch_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_hip_roll_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_hip_yaw_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_knee_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_shoulder_pitch_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_shoulder_roll_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_shoulder_yaw_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_wrist_pitch_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_wrist_roll_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_wrist_yaw_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "logo_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "mid360_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "pelvis"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "pelvis_contour_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_ankle_pitch_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_ankle_roll_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_elbow_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_hand_Link1_1"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_hand_Link1_2"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_hand_Link1_3"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_hand_Link2_1"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_hand_Link2_2"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_hand_Link2_3"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_hand_base_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_hip_pitch_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_hip_roll_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_hip_yaw_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_knee_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_shoulder_pitch_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_shoulder_roll_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_shoulder_yaw_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_wrist_pitch_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_wrist_roll_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_wrist_yaw_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "torso_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "waist_roll_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "waist_yaw_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+        }
+
+        over "LiftCarriage"
+        {
+            bool physics:kinematicEnabled = 1
+        }
+
+        over "Vehicle"
+        {
+            bool physics:kinematicEnabled = 1
+        }
+    }
+
+    def Xform "Worktable_A" (
+        references = @../assets-new/object/TableTrolley_B/TableTrolley_B01_01.usd@
+    )
+    {
+        uniform quatf xformOp:orient = (0.9612617, 0, 0, -0.27563736)
+        double3 xformOp:scale = (0.01, 0.01, 0.0098384)
+        double3 xformOp:translate = (-3.4930360874675377, 3.0117783742262385, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "sm_tabletrolley_b01_shelf_01"
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "Worktable_B" (
+        references = @../assets-new/object/TableTrolley_B/TableTrolley_B01_01.usd@
+    )
+    {
+        uniform quatf xformOp:orient = (0.4622379, 0, 0, -0.8867559)
+        double3 xformOp:scale = (0.005, 0.005, 0.0127665)
+        double3 xformOp:translate = (-3.9875209, 4.6178102, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Task01_BinPickPlace"
+    {
+        def Xform "BlueSortingBin" (
+            references = @../assets-new/object/BlueSortingBin/blue_sorting_bin.usd@
+        )
+        {
+            double3 xformOp:scale = (1.3, 1.3, 1.3)
+            double3 xformOp:translate = (-3.046699, 3.316754, 0.842)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+
+            over "Geometry"
+            {
+                over "sm_bin_20x25x05cm_a01_01"
+                {
+                    bool physics:kinematicEnabled = 1
+
+                    over "sm_bin_a05_20x25x05cm_pr_v_nvd_a01_01"
+                    {
+                        double3 xformOp:rotateXYZ = (0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-0.37311760073048195, -0.28891388050176126, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                    }
+                }
+            }
+        }
+
+        def Xform "MetalNozzle" (
+            references = @../assets-new/object/SAM3DMetalNozzle/SAM3D_Metal_Nozzle_GraspReady.usd@
+        )
+        {
+            bool physics:kinematicEnabled = 1
+            double3 xformOp:translate = (-2.725083, 3.6726, 0.8782)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            over "Geometry"
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.5954151449640444, -0.4941653141153668, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+    }
+
+    def Xform "Task02_HandCartPush"
+    {
+        def Xform "HandCart" (
+            references = @../objects/two_wheel_steel_hand_cart.usd@
+        )
+        {
+            bool physics:kinematicEnabled = 1
+            uniform quatf xformOp:orient = (-0.3533789, -0.3533789, 0.6124732, 0.6124732)
+            double3 xformOp:translate = (-1.55, 0.35, 0.293)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            over "geometry_0"
+            {
+                over "geometry_0"
+                {
+                    quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-4.060936854880567, -0.02998782316361176, 0.24783144575540628)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+        }
+    }
+
+    def Xform "Task03_RoofBoltSleeve"
+    {
+        def Xform "Sleeve" (
+            references = @../assets-new/object/steel_mining_roof_bolt_coupling_sleeve_ID53_OD55_COD65_L250.usd@
+        )
+        {
+            bool physics:kinematicEnabled = 1
+            double3 xformOp:translate = (-2.745, 3.822, 0.965)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            over "Visual"
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.7110850661284194, -0.3763632517580513, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "RoofBolt" (
+            references = @../assets-new/object/M20_Bolt_Chain_D45_L1450.usda@
+        )
+        {
+            bool physics:kinematicEnabled = 1
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-2.982540075871199, 3.71289883373344, 0.575)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Segment_09"
+            {
+                bool physics:kinematicEnabled = 1
+
+                over "M20_Bolt_Tight_Visual"
+                {
+                    over "M20_Bolt_Tight_new"
+                    {
+                        double3 xformOp:rotateXYZ = (0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                    }
+                }
+            }
+
+            over "Segment_00"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "Segment_01"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "Segment_02"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "Segment_03"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "Segment_04"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "Segment_05"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "Segment_06"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "Segment_07"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "Segment_08"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "Segment_10"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+        }
+    }
+
+    def Xform "Task04_TabletopGrasp"
+    {
+        def Xform "Leiguan" (
+            references = @../assets-new/object/leiguan.usd@
+        )
+        {
+            uniform quatf xformOp:orient = (0.8661679, 0, 0, 0.4997532)
+            double3 xformOp:translate = (-2.715412, 3.609474, 1.02)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            over "HollowCylinder"
+            {
+                bool physics:kinematicEnabled = 1
+
+                over "Mesh"
+                {
+                    float3 xformOp:rotateZYX = (0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-1.3547681593777217, 0.24727094942650396, 4.884981308350689e-15)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+                }
+            }
+        }
+
+        def Xform "RodHolder" (
+            references = @../assets-new/object/chaganshengzi_holder.usd@
+        )
+        {
+            bool physics:kinematicEnabled = 1
+            uniform quatf xformOp:orient = (0.8661679, 0, 0, 0.49975312)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-3.2154666864250068, 3.3577051412962744, 0.84)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "VerticalRod" (
+            references = @../assets-new/object/chaganshengzi_standing.usd@
+        )
+        {
+            uniform quatf xformOp:orient = (0.4997532, 0, 0, -0.86616784)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-3.2154666864250068, 3.3577051412962744, 0.848)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "SmoothConnector"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "rope_40cm"
+            {
+                over "Links"
+                {
+                    over "Link_00"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_01"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_02"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_03"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_04"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_05"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_06"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_07"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_08"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_09"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_10"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_11"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_12"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_13"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_14"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_15"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_16"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_17"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_18"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_19"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_20"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_21"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_22"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_23"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_24"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_25"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+                }
+            }
+        }
+    }
+
+    def Xform "Task05_ValveHandwheel"
+    {
+        def Xform "Valve" (
+            references = @../assets-new/object/valve_handwheel_task/three_way_ball_valve_task.usd@
+        )
+        {
+            bool physics:kinematicEnabled = 1
+            uniform quatf xformOp:orient = (0.3533789, 0.3533789, -0.6124732, -0.6124732)
+            double3 xformOp:translate = (1.1816713, 1.0795025, 1.25)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+        }
+
+        def Xform "Handwheel" (
+            references = @../assets-new/object/valve_handwheel_task/blue_valve_handwheel_task.usd@
+        )
+        {
+            bool physics:kinematicEnabled = 1
+            uniform quatf xformOp:orient = (0.3533789, 0.3533789, -0.6124732, -0.6124732)
+            double3 xformOp:translate = (0.9434702, 1.217209, 1.25)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+        }
+    }
+
+    def Xform "Task06_WallHoleDetonator"
+    {
+        def Xform "LoadedDetonator" (
+            references = @../assets-new/object/loaded_detonator_assembly.usd@
+        )
+        {
+            uniform quatf xformOp:orient = (0.6744969, -0.67449695, 0.21225902, -0.21225902)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-3.82364603896925, 4.469878844457177, 1.114500000000003)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Body"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "Rope"
+            {
+                over "Links"
+                {
+                    over "Link_00"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_01"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_02"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_03"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_04"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_05"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_06"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_07"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_08"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_09"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_10"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_11"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_12"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_13"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_14"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_15"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_16"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_17"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_18"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_19"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_20"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_21"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_22"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_23"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_24"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+
+                    over "Link_25"
+                    {
+                        bool physics:kinematicEnabled = 1
+                    }
+                }
+            }
+        }
+    }
+
+    def "Tracked_Galbot_UpperBody_SolidBoom" (
+        prepend payload = @./galbot_tracked_hybrid/Tracked_Galbot_UpperBody_SolidBoom.usda@
+    )
+    {
+        quatf xformOp:orient = (0.8703557, 0, 0, 0.4924235)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (1.2613344287697366, 5.836696030982304, 0.03635227138506207)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "GalbotUpperBody"
+        {
+            over "head_link1"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "head_link2"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_arm_link1"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_arm_link2"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_arm_link3"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_arm_link4"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_arm_link5"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_arm_link6"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_arm_link7"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_gripper_l_finger_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_gripper_l_inner_knuckle_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_gripper_l_knuckle_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_gripper_r_finger_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_gripper_r_inner_knuckle_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "left_gripper_r_knuckle_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "leg_link5"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_arm_link1"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_arm_link2"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_arm_link3"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_arm_link4"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_arm_link5"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_arm_link6"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_arm_link7"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_gripper_l_finger_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_gripper_l_inner_knuckle_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_gripper_l_knuckle_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_gripper_r_finger_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_gripper_r_inner_knuckle_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+
+            over "right_gripper_r_knuckle_link"
+            {
+                bool physics:kinematicEnabled = 1
+            }
+        }
+
+        over "LiftCarriage"
+        {
+            bool physics:kinematicEnabled = 1
+        }
+
+        over "Vehicle"
+        {
+            bool physics:kinematicEnabled = 1
+        }
+    }
+
+    def Camera "Camera" (
+        prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    )
+    {
+        float2 clippingRange = (0.01, 10000000)
+        float exposure:fStop = 5
+        float exposure:responsivity = 1.1026709
+        float exposure:time = 0.02
+        float focalLength = 15.400001
+        float focusDistance = 400
+        bool omni:kit:cameraLock = 0
+        token visibility = "inherited"
+        quatd xformOp:orient = (0.4956176937828989, 0.5043442292812728, 0.4956176937828987, 0.5043442292812725)
+        double3 xformOp:rotateZYX = (-149.27557248144902, 30.203477471087293, -195.71894214397676)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-3, 1.6, 1.6)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:rotateZYX"]
+    }
+
+    def OmniGraph "PushGraph"
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "push"
+        token fabricCacheBacking = "StageWithoutHistory"
+        int2 fileFormatVersion = (1, 9)
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "CameraCurveNode"
+        {
+            custom string inputs:IndividualOutputs
+            custom rel inputs:Prim = </AllTasksDistribution/Camera> (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "target"
+                        }
+                    }
+                }
+            )
+            custom timecode inputs:Time
+            custom bool inputs:UseGlobalTime
+            token node:type = "omni.anim.curve.core.AnimCurve"
+            int node:typeVersion = 5
+            custom rel outputs_AnimFrame (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "bundle"
+                        }
+                    }
+                }
+            )
+            uniform token visibility:x:defaultTangentType = "auto"
+            uniform int64[] visibility:x:inTangentTimes = [0, -98000000, -58800000, -39200000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000]
+            uniform token[] visibility:x:inTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] visibility:x:inTangentValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] visibility:x:outTangentTimes = [98000000, 58800000, 39200000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 0]
+            uniform token[] visibility:x:outTangentTypes = ["step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step", "step"]
+            uniform double[] visibility:x:outTangentValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token visibility:x:postInfinityType = "constant"
+            uniform token visibility:x:preInfinityType = "constant"
+            uniform bool[] visibility:x:tangentBrokens = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform bool[] visibility:x:tangentWeighteds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] visibility:x:times = [0, 294000000, 470400000, 588000000, 599760000, 611520000, 623280000, 635040000, 646800000, 658560000, 670320000, 682080000, 693840000, 705600000, 717360000, 729120000, 740880000, 752640000, 764400000, 776160000, 787920000, 799680000, 811440000, 823200000]
+            uniform double[] visibility:x:values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token xformOp:rotateZYX:x:defaultTangentType = "auto"
+            uniform int64[] xformOp:rotateZYX:x:inTangentTimes = [0, -98000000, -58800000, -39200000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000]
+            uniform token[] xformOp:rotateZYX:x:inTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:rotateZYX:x:inTangentValues = [0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:rotateZYX:x:outTangentTimes = [98000000, 58800000, 39200000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 0]
+            uniform token[] xformOp:rotateZYX:x:outTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:rotateZYX:x:outTangentValues = [0, 0, -5.333333333333336, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token xformOp:rotateZYX:x:postInfinityType = "constant"
+            uniform token xformOp:rotateZYX:x:preInfinityType = "constant"
+            uniform bool[] xformOp:rotateZYX:x:tangentBrokens = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform bool[] xformOp:rotateZYX:x:tangentWeighteds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:rotateZYX:x:times = [0, 294000000, 470400000, 588000000, 599760000, 611520000, 623280000, 635040000, 646800000, 658560000, 670320000, 682080000, 693840000, 705600000, 717360000, 729120000, 740880000, 752640000, 764400000, 776160000, 787920000, 799680000, 811440000, 823200000]
+            uniform double[] xformOp:rotateZYX:x:values = [0, 0, -20, -40, -45.45064125763481, -52.537350026839036, -61.617179161745874, -72.81141985562374, -85.63497355262815, -98.8407253840619, -110.96030863466137, -121.12091477362371, -129.20393647938545, -135.50132322409794, -140.39166990990142, -144.16563588961634, -147.01266301167388, -149.05446620426156, -150.36769084793468, -151.02059029055482, -151.13970150116592, -150.83778565213547, -150.19711893986653, -149.2756]
+            uniform token xformOp:rotateZYX:y:defaultTangentType = "auto"
+            uniform int64[] xformOp:rotateZYX:y:inTangentTimes = [0, -98000000, -58800000, -39200000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000]
+            uniform token[] xformOp:rotateZYX:y:inTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:rotateZYX:y:inTangentValues = [0, 0, 1.9400000289082513, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:rotateZYX:y:outTangentTimes = [98000000, 58800000, 39200000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 0]
+            uniform token[] xformOp:rotateZYX:y:outTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:rotateZYX:y:outTangentValues = [0, 0, -1.2933333526055009, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token xformOp:rotateZYX:y:postInfinityType = "constant"
+            uniform token xformOp:rotateZYX:y:preInfinityType = "constant"
+            uniform bool[] xformOp:rotateZYX:y:tangentBrokens = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform bool[] xformOp:rotateZYX:y:tangentWeighteds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:rotateZYX:y:times = [0, 294000000, 470400000, 588000000, 599760000, 611520000, 623280000, 635040000, 646800000, 658560000, 670320000, 682080000, 693840000, 705600000, 717360000, 729120000, 740880000, 752640000, 764400000, 776160000, 787920000, 799680000, 811440000, 823200000]
+            uniform double[] xformOp:rotateZYX:y:values = [-121.40000180900097, -55.70000082999468, -63.500000946223736, -65.40000097453594, -66.84162749202274, -68.18087116624281, -69.20837720073142, -69.62135052189393, -69.03229912055093, -67.05602298146512, -63.469928516611986, -58.241415130774264, -51.50317567408599, -43.549336456627444, -34.79626557506497, -25.60531213210962, -16.34681055107592, -7.373803308749803, 1.0427347805831813, 8.711503683140354, 15.458688606275054, 21.2420208801873, 26.122107266051405, 30.2035]
+            uniform token xformOp:rotateZYX:z:defaultTangentType = "auto"
+            uniform int64[] xformOp:rotateZYX:z:inTangentTimes = [0, -98000000, -58800000, -39200000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000]
+            uniform token[] xformOp:rotateZYX:z:inTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:rotateZYX:z:inTangentValues = [0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:rotateZYX:z:outTangentTimes = [98000000, 58800000, 39200000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 0]
+            uniform token[] xformOp:rotateZYX:z:outTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:rotateZYX:z:outTangentValues = [0, 0, -5.333333333333336, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token xformOp:rotateZYX:z:postInfinityType = "constant"
+            uniform token xformOp:rotateZYX:z:preInfinityType = "constant"
+            uniform bool[] xformOp:rotateZYX:z:tangentBrokens = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform bool[] xformOp:rotateZYX:z:tangentWeighteds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:rotateZYX:z:times = [0, 294000000, 470400000, 588000000, 599760000, 611520000, 623280000, 635040000, 646800000, 658560000, 670320000, 682080000, 693840000, 705600000, 717360000, 729120000, 740880000, 752640000, 764400000, 776160000, 787920000, 799680000, 811440000, 823200000]
+            uniform double[] xformOp:rotateZYX:z:values = [0, 0, -20, -40, -43.34342764029395, -50.70928419227151, -60.16026750016659, -71.85282299993912, -85.35776563656096, -99.51682994257202, -112.98644080738843, -125.03812387719437, -135.6762195626782, -145.209845883408, -153.85653092079977, -161.6596093527795, -168.54379503762325, -174.45206287865415, -179.44273065414416, -183.67112010039222, -187.2766989329515, -190.4004842523495, -193.17689458883788, -195.7189]
+            uniform token xformOp:scale:x:defaultTangentType = "auto"
+            uniform int64[] xformOp:scale:x:inTangentTimes = [0, -98000000, -58800000, -39200000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000]
+            uniform token[] xformOp:scale:x:inTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:scale:x:inTangentValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:scale:x:outTangentTimes = [98000000, 58800000, 39200000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 0]
+            uniform token[] xformOp:scale:x:outTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:scale:x:outTangentValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token xformOp:scale:x:postInfinityType = "constant"
+            uniform token xformOp:scale:x:preInfinityType = "constant"
+            uniform bool[] xformOp:scale:x:tangentBrokens = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform bool[] xformOp:scale:x:tangentWeighteds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:scale:x:times = [0, 294000000, 470400000, 588000000, 599760000, 611520000, 623280000, 635040000, 646800000, 658560000, 670320000, 682080000, 693840000, 705600000, 717360000, 729120000, 740880000, 752640000, 764400000, 776160000, 787920000, 799680000, 811440000, 823200000]
+            uniform double[] xformOp:scale:x:values = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+            uniform token xformOp:scale:y:defaultTangentType = "auto"
+            uniform int64[] xformOp:scale:y:inTangentTimes = [0, -98000000, -58800000, -39200000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000]
+            uniform token[] xformOp:scale:y:inTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:scale:y:inTangentValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:scale:y:outTangentTimes = [98000000, 58800000, 39200000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 0]
+            uniform token[] xformOp:scale:y:outTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:scale:y:outTangentValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token xformOp:scale:y:postInfinityType = "constant"
+            uniform token xformOp:scale:y:preInfinityType = "constant"
+            uniform bool[] xformOp:scale:y:tangentBrokens = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform bool[] xformOp:scale:y:tangentWeighteds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:scale:y:times = [0, 294000000, 470400000, 588000000, 599760000, 611520000, 623280000, 635040000, 646800000, 658560000, 670320000, 682080000, 693840000, 705600000, 717360000, 729120000, 740880000, 752640000, 764400000, 776160000, 787920000, 799680000, 811440000, 823200000]
+            uniform double[] xformOp:scale:y:values = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+            uniform token xformOp:scale:z:defaultTangentType = "auto"
+            uniform int64[] xformOp:scale:z:inTangentTimes = [0, -98000000, -58800000, -39200000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000]
+            uniform token[] xformOp:scale:z:inTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:scale:z:inTangentValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:scale:z:outTangentTimes = [98000000, 58800000, 39200000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 0]
+            uniform token[] xformOp:scale:z:outTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:scale:z:outTangentValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token xformOp:scale:z:postInfinityType = "constant"
+            uniform token xformOp:scale:z:preInfinityType = "constant"
+            uniform bool[] xformOp:scale:z:tangentBrokens = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform bool[] xformOp:scale:z:tangentWeighteds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:scale:z:times = [0, 294000000, 470400000, 588000000, 599760000, 611520000, 623280000, 635040000, 646800000, 658560000, 670320000, 682080000, 693840000, 705600000, 717360000, 729120000, 740880000, 752640000, 764400000, 776160000, 787920000, 799680000, 811440000, 823200000]
+            uniform double[] xformOp:scale:z:values = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+            uniform token xformOp:translate:x:defaultTangentType = "auto"
+            uniform int64[] xformOp:translate:x:inTangentTimes = [0, -98000000, -58800000, -39200000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000]
+            uniform token[] xformOp:translate:x:inTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:translate:x:inTangentValues = [0, 0, 0.540000008046627, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:translate:x:outTangentTimes = [98000000, 58800000, 39200000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 0]
+            uniform token[] xformOp:translate:x:outTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:translate:x:outTangentValues = [0, 0, -0.3600000053644181, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token xformOp:translate:x:postInfinityType = "constant"
+            uniform token xformOp:translate:x:preInfinityType = "constant"
+            uniform bool[] xformOp:translate:x:tangentBrokens = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform bool[] xformOp:translate:x:tangentWeighteds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:translate:x:times = [0, 294000000, 470400000, 588000000, 599760000, 611520000, 623280000, 635040000, 646800000, 658560000, 670320000, 682080000, 693840000, 705600000, 717360000, 729120000, 740880000, 752640000, 764400000, 776160000, 787920000, 799680000, 811440000, 823200000]
+            uniform double[] xformOp:translate:x:values = [-1.2000000178813934, -0.30000000447034836, -2.3000000342726707, -3, -3.1278594728594986, -3.254754077504123, -3.3797189457189973, -3.5017892092892478, -3.62, -3.7333113178512534, -3.840382635702507, -3.939798294628134, -4.030142635702508, -4.11, -4.178495255735488, -4.2369153796858505, -4.287087875768468, -4.330840247900725, -4.37, -4.406182222534632, -4.440152352176785, -4.472463412149577, -4.50366842567613, -4.534320415979563]
+            uniform token xformOp:translate:y:defaultTangentType = "auto"
+            uniform int64[] xformOp:translate:y:inTangentTimes = [0, -98000000, -58800000, -39200000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000]
+            uniform token[] xformOp:translate:y:inTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:translate:y:inTangentValues = [0, 0, -0.5000000074505806, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:translate:y:outTangentTimes = [98000000, 58800000, 39200000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 0]
+            uniform token[] xformOp:translate:y:outTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:translate:y:outTangentValues = [0, 0, 0.33333333830038714, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token xformOp:translate:y:postInfinityType = "constant"
+            uniform token xformOp:translate:y:preInfinityType = "constant"
+            uniform bool[] xformOp:translate:y:tangentBrokens = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform bool[] xformOp:translate:y:tangentWeighteds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:translate:y:times = [0, 294000000, 470400000, 588000000, 599760000, 611520000, 623280000, 635040000, 646800000, 658560000, 670320000, 682080000, 693840000, 705600000, 717360000, 729120000, 740880000, 752640000, 764400000, 776160000, 787920000, 799680000, 811440000, 823200000]
+            uniform double[] xformOp:translate:y:values = [-0.10000000149011612, -0.9000000134110451, 0.800000011920929, 1.6, 1.6186301239865502, 1.6411027169764625, 1.6712602479731, 1.712945185979825, 1.77, 1.845144690033625, 1.9366093800672501, 2.0415017250840624, 2.15692938006725, 2.28, 2.4087911158789495, 2.5452597627545366, 2.6923328516906486, 2.8529372937511743, 3.03, 3.2253138904819587, 3.436135921165669, 3.6585890570006914, 3.888796262936589, 4.122880503922924]
+            uniform token xformOp:translate:z:defaultTangentType = "auto"
+            uniform int64[] xformOp:translate:z:inTangentTimes = [0, -98000000, -58800000, -39200000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000, -3920000]
+            uniform token[] xformOp:translate:z:inTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:translate:z:inTangentValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:translate:z:outTangentTimes = [98000000, 58800000, 39200000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 3920000, 0]
+            uniform token[] xformOp:translate:z:outTangentTypes = ["auto", "auto", "auto", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear", "linear"]
+            uniform double[] xformOp:translate:z:outTangentValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token xformOp:translate:z:postInfinityType = "constant"
+            uniform token xformOp:translate:z:preInfinityType = "constant"
+            uniform bool[] xformOp:translate:z:tangentBrokens = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform bool[] xformOp:translate:z:tangentWeighteds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform int64[] xformOp:translate:z:times = [0, 294000000, 470400000, 588000000, 599760000, 611520000, 623280000, 635040000, 646800000, 658560000, 670320000, 682080000, 693840000, 705600000, 717360000, 729120000, 740880000, 752640000, 764400000, 776160000, 787920000, 799680000, 811440000, 823200000]
+            uniform double[] xformOp:translate:z:values = [1.600000023841858, 1.600000023841858, 1.600000023841858, 1.6, 1.6193053089823841, 1.638784290719172, 1.658610617964768, 1.678957963473576, 1.7, 1.7217367275440398, 1.74347345508808, 1.7643418188601, 1.78347345508808, 1.8, 1.813747780841456, 1.8273218889285079, 1.8440221065948317, 1.8671482161741038, 1.9, 1.9448930947979066, 2.0002065548600534, 2.0633352888703804, 2.1316742055128275, 2.2026182134713346]
+        }
+    }
+}
+
+def "Render" (
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </OmniverseKit_Persp>
+                token omni:rtx:ambientOcclusion:denoiserMode = "none"
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:debug:view:pixelDebug:enableFixedTextPos = 1
+                token omni:rtx:directLighting:sampledLighting:denoisingTechnique = "None"
+                bool omni:rtx:dlss:frameGeneration = 0
+                float3 omni:rtx:domeLight:rotationAxis = (0, 0, 1)
+                bool omni:rtx:indirectDiffuse:denoiser:enabled = 0
+                bool omni:rtx:material:db:syncLoads = 1
+                bool omni:rtx:post:compositing:outputAlpha
+                token omni:rtx:post:dlss:execMode = "performance"
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:adaptiveSampling:filterError = 0
+                uint omni:rtx:pt:adaptiveSampling:fixedSppIterations = 2
+                uint omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                uint omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                uint omni:rtx:pt:samplesPerPixel
+                bool omni:rtx:reflections:denoiser:enabled = 0
+                token omni:rtx:rendermode = "RealTimePathTracing"
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                bool omni:rtx:rt:ecoMode:enabled
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                int omni:rtx:rt:sss:samples = 1
+                uint omni:rtx:rtpt:maxVolumeBounces = 15
+                float omni:rtx:rtpt:modulatingRoughnessThreshold = 0.08
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (2048, 1080)
+            }
+
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_1" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </AllTasksDistribution/Camera>
+                token omni:rtx:ambientOcclusion:denoiserMode = "none"
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:debug:view:pixelDebug:enableFixedTextPos = 1
+                token omni:rtx:directLighting:sampledLighting:denoisingTechnique = "None"
+                bool omni:rtx:dlss:frameGeneration = 0
+                float3 omni:rtx:domeLight:rotationAxis = (0, 0, 1)
+                bool omni:rtx:indirectDiffuse:denoiser:enabled = 0
+                bool omni:rtx:material:db:syncLoads = 1
+                bool omni:rtx:post:compositing:outputAlpha
+                token omni:rtx:post:dlss:execMode = "performance"
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:adaptiveSampling:filterError = 0
+                uint omni:rtx:pt:adaptiveSampling:fixedSppIterations = 2
+                uint omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                uint omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                uint omni:rtx:pt:samplesPerPixel
+                bool omni:rtx:reflections:denoiser:enabled = 0
+                token omni:rtx:rendermode = "RealTimePathTracing"
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                bool omni:rtx:rt:ecoMode:enabled
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                int omni:rtx:rt:sss:samples = 1
+                uint omni:rtx:rtpt:maxVolumeBounces = 15
+                float omni:rtx:rtpt:modulatingRoughnessThreshold = 0.08
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = [
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_1>,
+        ]
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+            uniform token sourceType = "raw"
+        }
+    }
+}
+
+over "OmniverseKit_Persp" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (0.01, 10000000)
+    float exposure:fStop = 5
+    float exposure:responsivity = 1.1026709
+    float exposure:time = 0.02
+    float focalLength = 18.147562
+    float focusDistance = 400
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -7.598881178070633)
+    float3 xformOp:rotateXYZ = (87.73146, -1.9401383e-13, -46.00635)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (-4.291301173234416, -3.9983488432102847, 1.4984578464023879)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Front" (
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    float3 xformOp:rotateXYZ = (90, -1.2722219e-14, 90)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (5, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Right" (
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    float3 xformOp:rotateXYZ = (90, -1.41245e-30, 1.2722219e-14)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, -5, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Top" (
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    float3 xformOp:rotateXYZ = (-1.2722219e-14, -7.016709e-15, -90)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 5)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "PhysicsScene" (
+    active = false
+    prepend apiSchemas = ["NewtonSceneAPI", "PhysxSceneAPI"]
+)
+{
+}
+

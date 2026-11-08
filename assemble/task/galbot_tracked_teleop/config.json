@@ -1,0 +1,46 @@
+{
+  "robot": "galbot",
+  "display_name": "Tracked Galbot One Golf (upper body on tracked G1 lift chassis)",
+  "usd_path": "../galbot_tracked_hybrid/Tracked_Galbot_UpperBody_SolidBoom.usda",
+  "articulation_path": "/Assembly/GalbotUpperBody/leg_link5",
+  "articulation_root_ref": "/Assembly",
+  "joint_prefix": "/Assembly/GalbotUpperBody/joints/",
+  "left_arm_joints": [
+    "left_arm_joint1",
+    "left_arm_joint2",
+    "left_arm_joint3",
+    "left_arm_joint4",
+    "left_arm_joint5",
+    "left_arm_joint6",
+    "left_arm_joint7"
+  ],
+  "right_arm_joints": [
+    "right_arm_joint1",
+    "right_arm_joint2",
+    "right_arm_joint3",
+    "right_arm_joint4",
+    "right_arm_joint5",
+    "right_arm_joint6",
+    "right_arm_joint7"
+  ],
+  "head_joints": ["head_joint1", "head_joint2"],
+  "left_gripper_joints": ["left_gripper_joint"],
+  "right_gripper_joints": ["right_gripper_joint"],
+  "left_hand_joints": [],
+  "right_hand_joints": [],
+  "end_effector_paths": {
+    "left": "/Assembly/GalbotUpperBody/left_arm_link7",
+    "right": "/Assembly/GalbotUpperBody/right_arm_link7"
+  },
+  "home_arm_degrees": {
+    "left": [60.0, -90.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    "right": [-60.0, 90.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  },
+  "gripper_open_degrees": 0.0,
+  "gripper_closed_degrees": 92.0,
+  "gripper_rate": 1.25,
+  "arm_stiffness": 800.0,
+  "arm_damping": 60.0,
+  "head_camera_path": "/Assembly/GalbotUpperBody/head_link2/head_end_effector_mount_link",
+  "gripper_type": "two_finger"
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "robot": {
+    "x": -0.9818309171279677,
+    "y": 1.868526199382671,
+    "yaw_radians": 2.6174239368232405,
+    "root_z_m": 0.08,
+    "body_z_m": 0.5,
+    "body_pitch_radians": 0.0,
+    "head_yaw_radians": 0.0,
+    "head_pitch_radians": 0.0
+  },
+  "task_object": {
+    "position_xyz_m": [-3.212946653366089, 3.0915591716766357, 0.36276965141296386],
+    "orientation_wxyz": [-0.4541494846343994, 0.09288319200277328, -0.01043477188795805, 0.8860092163085938],
+    "scale_xyz": [0.9, 0.9, 0.9]
+  },
+  "environment": {
+    "position_xyz_m": [0.0, 0.0, 0.0],
+    "rotation_x_degrees": 90.0
+  },
+  "camera": {
+    "eye_xyz_m": [-2.4922270167287612, 4.270214817339222, 0.8281378880647272],
+    "target_xyz_m": [-2.8134936370971024, 3.302986977182755, 0.583105380029525]
+  },
+  "source": {
+    "repository": "../../../../LW-BenchHub",
+    "commit": "b2bcb2d",
+    "robot": "X7S-Abs",
+    "teleop_device": "vr-controller"
+  }
+}

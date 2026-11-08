@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "name": "Tracked G1 Upper-Body Mobile Drilling Scene",
+  "slug": "w1_mobile_drilling_task",
+  "task_type": "bimanual_manipulation_drilling",
+  "description": "The original W1 tracked chassis and lift carry a legless Unitree G1 upper body with Dex1 in reconstructed RealScene04.",
+  "assets": {
+    "environment": "assets/environment/RealScene04/real2sim_intermediate/RealScene04_Orin.usd",
+    "robot": "../../assets-new/robot/Tracked_G1_UpperBody_SolidBoom/Tracked_G1_UpperBody_SolidBoom.usd",
+    "task_object": "assets/objects/gasoline_powered_post_driver.usd"
+  },
+  "entrypoint": "run_task.sh",
+  "isaaclab_task": "Isaac-MobileDrilling-G129-Dex1-Joint",
+  "placement": {
+    "tracked_base_xy_yaw": [-0.9818309171, 1.8685261994, -0.5241687168],
+    "lift_height_m": -0.4541666667,
+    "w1_upper_mount_local_xyz": [-1.1624115936, 0.0, 0.9674328442],
+    "g1_pelvis_world_xyz": [-1.9881774703, 2.4503056490, 0.5132661776],
+    "g1_orientation_wxyz": [0.2590942950, 0.0, 0.0, 0.9658520313]
+  },
+  "control": {
+    "arm": "official_unitree_g1_29_xr_teleoperate",
+    "ik": "official_unitree_g1_29_arm_ik",
+    "end_effector": "dex1",
+    "input_mode": "controller",
+    "quest_entrypoint": "run_quest3s.sh",
+    "teleoperation_start_key": "r",
+    "teleoperation_auto_start": false,
+    "dds": true,
+    "tracked_base_keyboard": ["W", "S", "A", "D"],
+    "lift_keyboard": ["T", "Y"],
+    "interactive_cameras": ["front", "left_wrist", "right_wrist"]
+  }
+}

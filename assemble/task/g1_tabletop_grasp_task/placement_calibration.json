@@ -1,0 +1,58 @@
+{
+  "coordinate_convention": "world XYZ in meters; quaternion order is WXYZ",
+  "captured_before_rear_wall_move": {
+    "tracked_base_xy_yaw_lift": [
+      -1.2885240045627258,
+      2.045828781902252,
+      -0.5241687167665526,
+      -0.07815947264447132
+    ],
+    "g1_root_position": [
+      -2.501575708,
+      2.758633614,
+      0.9123085141181946
+    ],
+    "table_position": [-3.0606229131241984, 3.0818245337758357, 0.0]
+  },
+  "rear_wall_move": {
+    "translation": [0.0, 0.45, 0.0],
+    "rear_wall_axis": "+Y",
+    "approximate_wall_y": 4.5,
+    "approximate_nearest_table_edge_clearance": 0.25
+  },
+  "saved_default_after_move": {
+    "tracked_base_xy_yaw_lift": [
+      -1.2885240045627258,
+      2.495828781902252,
+      -0.5241687167665526,
+      -0.07815947264447132
+    ],
+    "g1_root_position": [
+      -2.501575708,
+      3.208633614,
+      0.9123085141181946
+    ],
+    "table_position": [-3.0606229131241984, 3.531824533775836, 0.0],
+    "leiguan_position": [-2.71541199650797, 3.609473893393177, 1.02],
+    "holder_position": [-2.860555112173641, 3.3584092085510795, 0.84],
+    "rod_and_rope_root_position": [
+      -2.860555112173641,
+      3.3584092085510795,
+      0.848
+    ]
+  },
+  "preserved_relative_poses": {
+    "tracked_base_minus_table_position": [
+      1.7720989085614726,
+      -1.0359957518735836,
+      -0.07815947264447132
+    ],
+    "g1_root_minus_table_position": [
+      0.5590472051241986,
+      -0.3231909197758356,
+      0.9123085141181946
+    ],
+    "table_yaw": 1.0466276100283438,
+    "tracked_base_yaw": -0.5241687167665526
+  }
+}

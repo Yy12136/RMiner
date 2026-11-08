@@ -1,0 +1,50 @@
+# ---------------------------------------------------------------------------
+# Downloaded datasets / 3D assets (hosted on Hugging Face, not in git)
+# ---------------------------------------------------------------------------
+assemble/assets-new/*
+!assemble/assets-new/.gitkeep
+assemble/objects/*
+!assemble/objects/.gitkeep
+assemble/task/*/assets/
+assemble/task/*/data/
+assemble/task/*/experiments/
+assemble/task/*/outputs/
+assemble/third_party/unitree_sim_isaaclab/assets/
+datasets/*
+!datasets/.gitkeep
+.hf_assets/
+.hf_datasets/
+policy/lerobot/
+
+# Recorded / generated media
+*.mp4
+*.mov
+*_frames/
+artifacts/
+replay_augmented/
+camera_demo_*
+head_camera_first3*
+all_task_asset_renders/
+robot_exports/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Local logs and credentials
+*.log
+*.auth
+.env
+.env.*

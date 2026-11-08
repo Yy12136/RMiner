@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "robot": {
+    "x": -0.9818309171279677,
+    "y": 1.868526199382671,
+    "yaw_radians": -0.5241687167665526,
+    "lift_height_m": -0.4541666666666663
+  },
+  "task_object": {
+    "position_xyz_m": [
+      -3.212946653366089,
+      3.0915591716766357,
+      0.31276965141296387
+    ],
+    "orientation_wxyz": [
+      -0.4541494846343994,
+      0.09288319200277328,
+      -0.01043477188795805,
+      0.8860092163085938
+    ],
+    "scale_xyz": [
+      0.9,
+      0.9,
+      0.9
+    ]
+  },
+  "environment": {
+    "position_xyz_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "rotation_x_degrees": 90.0
+  },
+  "camera": {
+    "eye_xyz_m": [
+      -2.4922270167287612,
+      4.270214817339222,
+      0.8281378880647272
+    ],
+    "target_xyz_m": [
+      -2.8134936370971024,
+      3.302986977182755,
+      0.583105380029525
+    ]
+  },
+  "updated_at": "2026-08-09T21:22:04.646021+08:00",
+  "robot_joint_state": {
+    "position_targets": {
+      "left_joint1": 0.0,
+      "left_joint2": 0.0,
+      "left_joint3": 0.0,
+      "left_joint4": 0.0,
+      "left_joint5": 0.0,
+      "left_joint6": 0.0,
+      "left_joint7": 0.0,
+      "right_joint1": 0.0,
+      "right_joint2": 0.0,
+      "right_joint3": 0.0,
+      "right_joint4": 0.0,
+      "right_joint5": 0.0,
+      "right_joint6": 0.0,
+      "right_joint7": 0.0,
+      "left_gripper_joint": 0.0,
+      "right_gripper_joint": 0.0,
+      "head_yaw_joint": 0.0,
+      "head_pitch_joint": 0.1808333005507787,
+      "waist_pitch_joint": 0.6749994826316833,
+      "waist_updown_joint": 0.0
+    }
+  }
+}
